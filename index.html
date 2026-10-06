@@ -1,0 +1,208 @@
+<!doctype html>
+<html lang="pt-AO">
+<head>
+  <meta charset="utf-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover" />
+  <title>Moan Night Club · Kikagil, Luanda</title>
+  <meta name="description" content="Moan Night Club, a discoteca cubana do Kikagil em Luanda. Quinta de Semba, Sexta de Pagode, Sábado de Festa Latina e Domingo de Matinée. Entrada e reserva de mesa grátis." />
+  <meta name="theme-color" content="#0b0708" />
+  <meta property="og:title" content="Moan Night Club" />
+  <meta property="og:description" content="A discoteca cubana do Kikagil. Entrada grátis, de quinta a domingo." />
+  <meta property="og:image" content="/img/og.jpg" />
+  <meta property="og:type" content="website" />
+  <link rel="icon" href="/favicon.svg" type="image/svg+xml" />
+  <link rel="preload" as="image" href="/img/fachada-noite.webp" />
+</head>
+<body>
+  <!-- Abertura: a noite começa como um filme -->
+  <div class="intro" id="intro" aria-hidden="true">
+    <div class="intro__bar intro__bar--top"></div>
+    <div class="intro__bar intro__bar--bottom"></div>
+    <div class="intro__stage">
+      <svg class="intro__crown" viewBox="0 0 120 66" fill="none">
+        <path class="crown-line" d="M12 50 L6 18 L22 34 L33 10 L46 30 L60 2 L74 30 L87 10 L98 34 L114 18 L108 50 Z" />
+        <rect class="crown-line" x="12" y="55" width="96" height="7" rx="1.5" />
+      </svg>
+      <p class="intro__word"><span>M</span><span>O</span><span>A</span><span>N</span></p>
+      <p class="intro__sub">Kikagil, Luanda</p>
+    </div>
+    <button class="intro__skip" type="button">Saltar</button>
+  </div>
+
+  <canvas class="gl" id="gl" aria-hidden="true"></canvas>
+
+  <header class="nav" id="nav">
+    <a class="nav__brand" href="#topo" aria-label="Moan Night Club, início">
+      <svg class="crown" viewBox="0 0 120 66" aria-hidden="true"><use href="#crown" /></svg>
+      <span class="nav__word">Moan</span>
+    </a>
+    <nav class="nav__links" aria-label="Principal">
+      <a href="#semana">A semana</a>
+      <a href="#sabado">Sábado cubano</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#local">Onde estamos</a>
+    </nav>
+    <a class="btn btn--solid nav__cta" data-wa="reserva" href="#">Reservar mesa</a>
+    <button class="nav__menu" type="button" aria-expanded="false" aria-controls="menu">
+      <span></span><span></span><span class="sr">Menu</span>
+    </button>
+  </header>
+
+  <div class="menu" id="menu" hidden>
+    <nav aria-label="Menu">
+      <a href="#semana">A semana</a>
+      <a href="#sabado">Sábado cubano</a>
+      <a href="#ofertas">Ofertas</a>
+      <a href="#eventos">Eventos</a>
+      <a href="#local">Onde estamos</a>
+    </nav>
+    <a class="btn btn--solid" data-wa="reserva" href="#">Reservar mesa</a>
+  </div>
+
+  <main>
+    <!-- 1. Herói: travelling até à porta -->
+    <section class="hero" id="topo" data-dim="0.1">
+      <div class="hero__scrim" aria-hidden="true"></div>
+      <div class="hero__inner">
+        <h1 class="hero__title">
+          <svg class="crown hero__crown" viewBox="0 0 120 66" aria-hidden="true"><use href="#crown" /></svg>
+          <span class="hero__word" aria-label="Moan">MOAN</span>
+          <span class="hero__club">Night Club</span>
+        </h1>
+        <p class="hero__lede">A discoteca cubana do Kikagil. De quinta a domingo, com entrada grátis.</p>
+        <div class="hero__actions">
+          <a class="btn btn--solid" data-wa="reserva" href="#">Reservar mesa</a>
+          <a class="btn btn--ghost" href="#semana">Ver a semana</a>
+        </div>
+      </div>
+      <div class="hero__tonight" id="tonight" hidden>
+        <span class="live"></span><span class="hero__tonight-text"></span>
+      </div>
+    </section>
+
+    <!-- 2. Entra -->
+    <section class="enter" id="entra" data-dim="0.55">
+      <p class="enter__line" data-split>
+        Luz vermelha, mesas cheias e o DJ a aquecer a pista.
+        Aqui a noite tem sotaque cubano e coração de Luanda.
+      </p>
+    </section>
+
+    <!-- 3. A semana: travelling horizontal -->
+    <section class="week" id="semana" data-dim="0.72">
+      <div class="week__pin">
+        <h2 class="week__title">Quatro noites.<br />Uma casa.</h2>
+        <div class="week__track">
+          <article class="night" data-day="4">
+            <p class="night__day">Quinta</p>
+            <h3 class="night__name">Noite de Semba</h3>
+            <p class="night__text">O semba de sempre, para dançar colado do primeiro ao último disco.</p>
+          </article>
+          <article class="night" data-day="5">
+            <p class="night__day">Sexta</p>
+            <h3 class="night__name">Noite de Pagode</h3>
+            <p class="night__text">Roda de pagode para abrir o fim de semana com a malta toda.</p>
+          </article>
+          <article class="night" data-day="6">
+            <p class="night__day">Sábado</p>
+            <h3 class="night__name">Festa Latina</h3>
+            <p class="night__text">Noite cubana: comida cubana, bebida cubana e música latina com DJ.</p>
+          </article>
+          <article class="night" data-day="0">
+            <p class="night__day">Domingo</p>
+            <h3 class="night__name">Matinée da Ressaca</h3>
+            <p class="night__text">Para quem ainda não quer que o fim de semana acabe.</p>
+          </article>
+        </div>
+        <div class="week__progress" aria-hidden="true"><span></span></div>
+      </div>
+    </section>
+
+    <!-- 4. Sábado cubano -->
+    <section class="cuba" id="sabado" data-dim="0.35" data-scene="cubana">
+      <div class="cuba__copy">
+        <h2 class="cuba__title"><span class="line">Ao sábado,</span><span class="line"><em>é Havana.</em></span></h2>
+        <p class="cuba__text" data-split>
+          Aos sábados tudo é cubano: a comida que chega à mesa, a bebida no copo
+          e a música latina que o DJ não deixa parar.
+        </p>
+        <ul class="cuba__list">
+          <li>Comida cubana</li>
+          <li>Bebida cubana</li>
+          <li>Música latina com DJ</li>
+        </ul>
+      </div>
+    </section>
+
+    <!-- 5. Ofertas -->
+    <section class="offers" id="ofertas" data-dim="0.86">
+      <h2 class="sr">Ofertas da casa</h2>
+      <ul class="offers__list">
+        <li class="offer">
+          <span class="offer__big">Entrada</span>
+          <span class="offer__tag">grátis</span>
+        </li>
+        <li class="offer">
+          <span class="offer__big">Mesa</span>
+          <span class="offer__tag">reserva grátis</span>
+        </li>
+        <li class="offer offer--deal">
+          <span class="offer__big">2&times;1</span>
+          <span class="offer__tag">nas bebidas. Consome duas, a terceira é oferta da casa.</span>
+        </li>
+      </ul>
+    </section>
+
+    <!-- 6. Eventos privados -->
+    <section class="events" id="eventos" data-dim="0.6" data-scene="salao">
+      <h2 class="events__title"><span class="line">A casa</span><span class="line">é tua.</span></h2>
+      <p class="events__text">Alugamos o Moan para a tua festa. Tu trazes os convidados, nós tratamos da noite.</p>
+      <ul class="events__list" id="occasions">
+        <li><button type="button" data-occ="o meu aniversário">Aniversários</button></li>
+        <li><button type="button" data-occ="o meu casamento">Casamentos</button></li>
+        <li><button type="button" data-occ="uma despedida de solteiro">Despedidas de solteiro</button></li>
+        <li><button type="button" data-occ="uma festa privada">Festas privadas</button></li>
+      </ul>
+      <a class="btn btn--solid events__cta" data-wa="evento" href="#">Pedir orçamento</a>
+    </section>
+
+    <!-- 7. Onde estamos -->
+    <section class="place" id="local" data-dim="0.4" data-scene="rua">
+      <div class="place__copy">
+        <h2 class="place__title"><span class="line">Rua principal</span><span class="line">do Kikagil.</span></h2>
+        <p class="place__text">Contornando a Multiperfil, em Luanda. Procura a fachada de luz vermelha.</p>
+        <div class="place__actions">
+          <a class="btn btn--solid" href="https://www.google.com/maps/search/?api=1&query=-8.895061,13.184291" target="_blank" rel="noopener">Abrir no mapa</a>
+          <a class="btn btn--ghost" href="tel:+244933050192">Ligar 933 050 192</a>
+        </div>
+      </div>
+    </section>
+  </main>
+
+  <footer class="foot" data-dim="0.9">
+    <div class="foot__row">
+      <a class="foot__phone" href="tel:+244933050192">933 050 192</a>
+      <nav class="foot__nav" aria-label="Rodapé">
+        <a href="#semana">A semana</a>
+        <a href="#sabado">Sábado cubano</a>
+        <a href="#eventos">Eventos</a>
+        <a href="#local">Onde estamos</a>
+      </nav>
+    </div>
+    <p class="foot__word" aria-hidden="true">MOAN</p>
+    <div class="foot__legal">
+      <span>&copy; <span id="year">2026</span> Moan Night Club. Kikagil, Luanda.</span>
+      <a href="https://expressers.ao" target="_blank" rel="noopener">Site por Expressers</a>
+    </div>
+  </footer>
+
+  <svg width="0" height="0" style="position:absolute" aria-hidden="true">
+    <symbol id="crown" viewBox="0 0 120 66">
+      <path d="M12 50 L6 18 L22 34 L33 10 L46 30 L60 2 L74 30 L87 10 L98 34 L114 18 L108 50 Z" fill="currentColor" />
+      <rect x="12" y="55" width="96" height="7" rx="1.5" fill="currentColor" />
+    </symbol>
+  </svg>
+
+  <script type="module" src="/src/main.js"></script>
+</body>
+</html>
